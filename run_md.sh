@@ -17,7 +17,7 @@ TOP=../../C4mimNTf2
 PREV=md-npt
 STAGE=md-nve
 
-MAXH=1
+MAXH=2
 NPME=4
 
 
