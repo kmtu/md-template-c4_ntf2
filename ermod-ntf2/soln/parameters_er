@@ -1,0 +1,26 @@
+&ene_param
+        boxshp = 1,
+        cltype = 2,
+        cmbrule = 1,
+        elecut = 12,
+        engdiv = 1,
+        estype = 1,
+        inptemp = 303,
+        ljformat = 2,
+        ljswitch = 1,
+        lwljcut = 12,
+        ms1max = 40,
+        ms2max = 40,
+        ms3max = 40,
+        screen = 0.260284,
+        sltspec = 2,
+        slttype = 1,
+        splodr = 4,
+        upljcut = 12,
+/
+&hist
+      eclbin=5.0e-2, ecfbin=2.0e-3, ec0bin=2.0e-4, finfac=10.0e0,
+      ecdmin=-100.000000, ecfmns=-0.20e0, ecdcen=0.0e0, eccore=100.0e0,
+      ecdmax=1.0e11, pecore=200
+/
+
