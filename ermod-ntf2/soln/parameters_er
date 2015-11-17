@@ -1,21 +1,14 @@
 &ene_param
         boxshp = 1,
-        cltype = 2,
         cmbrule = 1,
-        elecut = 12,
         engdiv = 1,
         estype = 1,
         inptemp = 303,
         ljformat = 2,
         ljswitch = 1,
-        lwljcut = 12,
-        ms1max = 40,
-        ms2max = 40,
-        ms3max = 40,
-        screen = 0.260284,
+        lwljcut = 11.5,
         sltspec = 2,
         slttype = 1,
-        splodr = 4,
         upljcut = 12,
 /
 &hist

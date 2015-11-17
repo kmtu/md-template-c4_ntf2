@@ -1,13 +1,8 @@
 #!/bin/sh
-#PJM -g gh24
-#PJM -L "rscgrp=short"
-#PJM -L "node=8"
-#PJM -L "elapse=02:00:00"
-#PJM --mpi "proc=32"
-#PJM -m e
-#PJM --mail-list kmtu@esicb.kyoto-u.ac.jp
+cd ${PBS_O_WORKDIR} 
+NPROCS=`wc -l <$PBS_NODEFILE`
 
-GMDIR=/home/f24005/local/gromacs-5.1/bin
+GMDIR=$HOME/local/gromacs-5.1/bin
 GMX=$GMDIR/gmx_d
 GROMPP="$GMX grompp"
 TPBCONV="$GMX convert-tpr"
@@ -18,9 +13,9 @@ PREV=md-npt
 STAGE=md-nve
 
 MAXH=1
-NPME=4
-
+NPME=-1
 
 $GROMPP -f ../${STAGE}.mdp -c $PREV.tpr -t $PREV.cpt -p $TOP.top -o $STAGE.tpr 
-mpiexec $MDRUN -s $STAGE.tpr -deffnm $STAGE -npme $NPME -maxh $MAXH #-cpi $STAGE.cpt
+mpirun -n $NPROCS -hostfile $PBS_NODEFILE \
+$MDRUN -s $STAGE.tpr -deffnm $STAGE -npme $NPME -maxh $MAXH #-cpi $STAGE.cpt
 
