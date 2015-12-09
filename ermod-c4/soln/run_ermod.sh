@@ -1,14 +1,32 @@
-#!/bin/sh
-#PJM -g gh24
-#PJM -L "rscgrp=short"
-#PJM -L "node=72"
-#PJM -L "elapse=06:00:00"
-#PJM --mpi "proc=1152"
-#PJM -m e
-#PJM --mail-list kmtu@esicb.kyoto-u.ac.jp
+#/bin/bash -x
+#PJM --rsc-list "node=64"
+#PJM --rsc-list "elapse=04:00:00"
+#PJM --name er-c4
+#PJM --mpi "shape=64"
+#PJM --mpi "proc=512"
+#PJM -s
+#
+#PJM --stg-transfiles all
+#
+#PJM --vset path=../../
+#PJM --vset traj=md-nve
+#PJM --stgin "/home/hp150268/k02368/opt/ermod-engtraj/ermod-libexec.tar.gz ./"
+#PJM --stgin "/home/hp150268/k02368/opt/ermod-engtraj/bin/ermod ./"
+#
+#PJM --stgin "${path}${traj}.trr ./"
+#PJM --stgin "MDinfo ./"
+#PJM --stgin "MolPrm2 ./"
+#PJM --stgin "SltInfo ./"
+#PJM --stgin "parameters_er ./"
+#
+#PJM --stgout "*.tt ./"
+#PJM --stgout "engsln.* ./"
+#PJM --stgout "weight_soln ./"
+#PJM --stgout "engtraj.h5 ./"
 
-module load PHDF5
-
-ermod=/home/f24005/local/ermod-engtraj/bin/ermod
-
-mpiexec $ermod
+. /work/system/Env_base
+#
+ln -sf md-nve.trr HISTORY  # the filename defined above as traj needs to be used
+tar xzf ermod-libexec.tar.gz
+export ERMOD_PLUGINS="libexec/ermod"
+mpiexec ./ermod

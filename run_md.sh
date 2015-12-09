@@ -2,7 +2,7 @@
 #PJM --rsc-list "node=16"
 #PJM --rsc-list "rscgrp=small"
 #PJM --rsc-list "elapse=03:00:00"
-#PJM --name md-nve
+#PJM --name run_md-nve
 #PJM --mpi "shape=16"
 #PJM --mpi "proc=128"
 #PJM -s
@@ -40,7 +40,7 @@ prev=md-npt
 stage=md-nve
 
 maxh=3
-npme=-1
+npme=8
 
 $grompp -f $stage.mdp -c $prev.tpr -t $prev.cpt -p $top -o $stage.tpr
 mpiexec $mdrun -deffnm $stage -npme $npme -maxh $maxh #-cpi $stage.cpt
