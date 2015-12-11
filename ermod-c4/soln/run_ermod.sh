@@ -23,6 +23,9 @@
 #PJM --stgout "engsln.* ./"
 #PJM --stgout "weight_soln ./"
 #PJM --stgout "engtraj.h5 ./"
+#
+#PJM -m e
+#PJM --mail-list kmtu@esicb.kyoto-u.ac.jp
 
 . /work/system/Env_base
 #
